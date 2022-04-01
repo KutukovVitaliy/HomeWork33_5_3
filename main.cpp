@@ -48,8 +48,17 @@ void WorkWithRegister(){
         }
         else if(command == "find")
         {
-            std::cout << "Input key: ";
-            std::cin >> key;
+            while(true) {
+                std::cout << "Input key: ";
+                std::cin >> key;
+                if (std::cin.fail())
+                {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "Bad input! Try again." << std::endl;
+                }
+                else break;
+            }
             std::vector<Pair<T1, T2>> result = reg.FindElements(key);
             for(auto& el : result)
             {
@@ -59,8 +68,18 @@ void WorkWithRegister(){
         }
         else if(command == "remove")
         {
-            std::cout << "Input key: ";
-            std::cin >> key;
+            while (true)
+            {
+                std::cout << "Input key: ";
+                std::cin >> key;
+                if (std::cin.fail())
+                {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "Bad input! Try again." << std::endl;
+                }
+                else break;
+            }
             reg.RemoveElements(key);
         }
         else
@@ -70,7 +89,7 @@ void WorkWithRegister(){
     }
 }
 int main() {
-    WorkWithRegister<int, int>();
+    WorkWithRegister<std::string, std::string>();
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }

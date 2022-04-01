@@ -68,6 +68,7 @@ public:
             os << it->key << ":" << it->value << " ";
         }
         os << std::endl;
+        return os;
     }
 };
 
