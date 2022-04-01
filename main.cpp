@@ -15,19 +15,29 @@ void WorkWithRegister(){
         if(command == "exit") return;
         else if(command == "add")
         {
-            std::cout << "Input the key: ";
-            std::cin >> key;
-            if (std::cin.fail())
+            while(true)
             {
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Input the key: ";
+                std::cin >> key;
+                if (std::cin.fail())
+                {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "Bad input! Try again." << std::endl;
+                }
+                else break;
             }
-            std::cout << "Input the value: ";
-            std::cin >> value;
-            if (std::cin.fail())
+            while(true)
             {
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Input the value: ";
+                std::cin >> value;
+                if (std::cin.fail())
+                {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "Bad input! Try again." << std::endl;
+                }
+                else break;
             }
             Pair<T1, T2> pair{key, value};
             reg.AddElement(pair);
